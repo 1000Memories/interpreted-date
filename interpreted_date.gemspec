@@ -8,8 +8,8 @@ Gem::Specification.new do |gem|
   gem.version       = InterpretedDate::VERSION
   gem.authors       = ["Brett Huneycutt"]
   gem.email         = ["brett@1000memories.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = %q{Human readable dates from incomplete dates}
+  gem.summary       = %q{Provide one, some or all of decade, year, month and day and get back a human readable date.}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($/)
