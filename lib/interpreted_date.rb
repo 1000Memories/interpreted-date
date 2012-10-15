@@ -68,22 +68,25 @@ class InterpretedDate
 
   def to_s(options = {})
     preposition = options.fetch(:preposition) { false }
+    output = nil
     if day && month && year && date
-      date.strftime("%B %-d, %Y")
+      output = preposition ? "on " : ""
+      output << date.strftime("%B %-d, %Y")
     elsif month && year && date
-      date.strftime("%B %Y")
+      output = preposition ? "in " : ""
+      output << date.strftime("%B %Y")
     elsif year && date
       output = preposition ? "in " : ""
       output << date.strftime("%Y")
-      output
     elsif decade
       output = preposition ? "in the " : ""
       output << decade.to_s
       output << "s"
-      output
     elsif day && month && date
-      date.strftime("%B %-d")
+      output = preposition ? "on " : ""
+      output << date.strftime("%B %-d")
     end
+    output
   end
 
   def self.from_json(json)
