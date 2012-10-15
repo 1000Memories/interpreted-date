@@ -56,6 +56,11 @@ describe InterpretedDate do
     it "returns the right integer" do
       subject.to_i.should eq(Date.new(1955, 3).to_time.to_i)
     end
+
+    it "returns the right string with a preposition" do
+      subject.to_s(preposition: true).should eq("in March 1955")
+    end
+
   end
 
   describe "with decade, year, month and day" do
@@ -68,6 +73,11 @@ describe InterpretedDate do
     it "returns the right integer" do
       subject.to_i.should eq(Date.new(1955, 3, 1).to_time.to_i)
     end
+
+    it "returns the right string with a preposition" do
+      subject.to_s(preposition: true).should eq("on March 1, 1955")
+    end
+
   end
 
   describe "with month and day" do
@@ -80,6 +90,11 @@ describe InterpretedDate do
     it "returns nil integer" do
       subject.to_i.should be_nil
     end
+
+    it "returns the right string with a preposition" do
+      subject.to_s(preposition: true).should eq("on October 31")
+    end
+
   end
 
   describe "with invalid date" do
