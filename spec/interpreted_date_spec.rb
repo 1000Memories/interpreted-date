@@ -94,4 +94,12 @@ describe InterpretedDate do
     end
   end
 
+  describe "#from_json" do
+    subject { InterpretedDate.new({:year => 2012, :month => 2, :day => 31}) }
+
+    it "correctly parses the json" do
+      subject.should == InterpretedDate.from_json('year' => 2012, 'month' => 2, 'day' => 31)
+    end
+  end
+
 end
