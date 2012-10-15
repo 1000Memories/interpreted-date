@@ -18,11 +18,11 @@ class InterpretedDate
   end
 
   def decade=(value)
-    @decade = value.to_i if value
+    @decade = value.to_i  if value
   end
 
   def year=(value)
-    @year = value.to_i if value
+    @year = value.to_i  if value
   end
 
   def month=(value)
@@ -38,7 +38,7 @@ class InterpretedDate
   end
 
   def day=(value)
-    @day = value.to_i if value
+    @day = value.to_i  if value
   end
 
   def interpreted_year
