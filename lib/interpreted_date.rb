@@ -17,6 +17,32 @@ class InterpretedDate
     new(year: date.year, month: date.month, day: date.day)
   end
 
+  def decade=(value)
+    @decade = value.to_i  if value
+  end
+
+  def year=(value)
+    @year = value.to_i  if value
+  end
+
+  def month=(value)
+    if value.nil?
+      @month = nil
+    elsif value.to_i == 0
+      if Date::ABBR_MONTHNAMES.index(value) && Date::ABBR_MONTHNAMES.index(value) > 0
+        @month = Date::ABBR_MONTHNAMES.index(value)
+      elsif Date::MONTHNAMES.index(value) && Date::MONTHNAMES.index(value) > 0 
+        @month = Date::MONTHNAMES.index(value)
+      end
+    else
+      @month = value.to_i
+    end
+  end
+
+  def day=(value)
+    @day = value.to_i  if value
+  end
+
   def interpreted_year
     @interpreted_year ||= year || (decade && (decade + 5)) || DEFAULT_YEAR
   end
