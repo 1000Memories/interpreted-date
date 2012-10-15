@@ -98,7 +98,7 @@ describe InterpretedDate do
     subject { InterpretedDate.new({:year => 2012, :month => 2, :day => 31}) }
 
     it "correctly parses the json" do
-      InterpretedDate.new({:year => 2012, :month => 2, :day => 31}).should == InterpretedDate.from_json('year' => 2012, 'month' => 2, 'day' => 31)
+      subject.should == InterpretedDate.from_json('year' => 2012, 'month' => 2, 'day' => 31)
     end
   end
 
