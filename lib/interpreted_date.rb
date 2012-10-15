@@ -60,6 +60,15 @@ class InterpretedDate
     end
   end
 
+  def self.from_json(json)
+    d = InterpretedDate.new
+    d.decade = json['decade']
+    d.year = json['year']
+    d.month = json['month']
+    d.day = json['day']
+    d
+  end
+
   def as_json(options = {})
     {
       'string' => self.to_s,
@@ -88,6 +97,10 @@ class InterpretedDate
 
   def present?
     [decade, year, month, day].any?(&:present?)
+  end
+
+  def ==(other_date)
+    self.decade == other_date.decade && self.year == other_date.year && self.month == other_date.month && self.day == other_date.day
   end
 
 end
