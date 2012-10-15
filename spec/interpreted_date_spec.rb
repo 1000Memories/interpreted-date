@@ -100,6 +100,18 @@ describe InterpretedDate do
     it "correctly parses the json" do
       subject.should == InterpretedDate.from_json('year' => 2012, 'month' => 2, 'day' => 31)
     end
+
+    it "correctly parses dates where values are strings" do
+      subject.should == InterpretedDate.from_json('year' => 2012, 'month' => '2', 'day' => 31)
+    end
+
+    it "correctly parses date where the month is given by name" do
+      subject.should == InterpretedDate.from_json('year' => 2012, 'month' => 'February', 'day' => 31)
+    end
+
+    it "correctly parses date where the month is given by abbreviated name" do
+      subject.should == InterpretedDate.from_json('year' => 2012, 'month' => 'Feb', 'day' => 31)
+    end
   end
 
 end
