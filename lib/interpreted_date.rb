@@ -26,7 +26,9 @@ class InterpretedDate
   end
 
   def month=(value)
-    if value.to_i == 0
+    if value.nil?
+      @month = nil
+    elsif value.to_i == 0
       if Date::ABBR_MONTHNAMES.index(value) && Date::ABBR_MONTHNAMES.index(value) > 0
         @month = Date::ABBR_MONTHNAMES.index(value)
       elsif Date::MONTHNAMES.index(value) && Date::MONTHNAMES.index(value) > 0 
