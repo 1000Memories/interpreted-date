@@ -129,4 +129,32 @@ describe InterpretedDate do
     end
   end
 
+  describe "<=>", :focus do
+
+    it "correctly sorts with a decade" do
+      (InterpretedDate.new({:decade => 2010, :year => 2012, :month => 2, :day => 31}) <=> InterpretedDate.new({:decade => 2000 })).should == 1
+      (InterpretedDate.new({:decade => 1950, :year => 2012, :month => 2, :day => 31}) <=> InterpretedDate.new({:decade => 2000 })).should == -1
+      (InterpretedDate.new({:decade => 1950, :month => 2}) <=> InterpretedDate.new({:decade => 1950, :month => 10 })).should == -1
+      (InterpretedDate.new({:decade => 1950}) <=> InterpretedDate.new({:decade => 1950})).should == 0
+    end
+
+    it "correctly sorts with the year" do
+      (InterpretedDate.new({:decade => 2010, :year => 2012, :month => 2, :day => 31}) <=> InterpretedDate.new({:decade => 2010, :year => 2011 })).should == 1
+      (InterpretedDate.new({:decade => 2010, :year => 2012, :month => 2, :day => 31}) <=> InterpretedDate.new({:decade => 2010, :year => 2013 })).should == -1
+      (InterpretedDate.new({:decade => 2010, :year => 2012}) <=> InterpretedDate.new({:decade => 2010, :year => 2012})).should == 0
+    end
+
+    it "correctly sorts with the month" do
+      (InterpretedDate.new({:decade => 2010, :year => 2012, :month => 2, :day => 31}) <=> InterpretedDate.new({:decade => 2010, :year => 2011, :month => 1 })).should == 1
+      (InterpretedDate.new({:decade => 2010, :year => 2012, :month => 2, :day => 31}) <=> InterpretedDate.new({:decade => 2010, :year => 2013, :month => 3 })).should == -1
+      (InterpretedDate.new({:decade => 2010, :year => 2012, :month => 3}) <=> InterpretedDate.new({:decade => 2010, :year => 2012, :month => 3})).should == 0
+    end
+
+    it "correctly sorts with the day" do
+      (InterpretedDate.new({:decade => 2010, :year => 2012, :month => 2, :day => 31}) <=> InterpretedDate.new({:decade => 2010, :year => 2011, :month => 2, :day => 1 })).should == 1
+      (InterpretedDate.new({:decade => 2010, :year => 2012, :month => 2, :day => 15}) <=> InterpretedDate.new({:decade => 2010, :year => 2013, :month => 2, :day => 31 })).should == -1
+      (InterpretedDate.new({:decade => 2010, :year => 2012, :month => 2, :day => 31}) <=> InterpretedDate.new({:decade => 2010, :year => 2012, :month => 2, :day => 31})).should == 0
+    end
+  end
+
 end

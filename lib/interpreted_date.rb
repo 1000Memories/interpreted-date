@@ -132,4 +132,13 @@ class InterpretedDate
     self.decade == other_date.decade && self.year == other_date.year && self.month == other_date.month && self.day == other_date.day
   end
 
+  def <=>(other_date)
+    return nil unless other_date.is_a?(InterpretedDate)
+    (self.decade <=> other_date.decade).nonzero? ||
+    (self.year <=> other_date.year).nonzero? ||
+    (self.month <=> other_date.month).nonzero? ||
+    (self.day <=> other_date.day).nonzero? ||
+    0
+  end
+
 end
