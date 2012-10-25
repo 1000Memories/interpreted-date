@@ -129,7 +129,7 @@ describe InterpretedDate do
     end
   end
 
-  describe "<=>", :focus do
+  describe "<=>" do
 
     it "correctly sorts with a decade" do
       (InterpretedDate.new({:decade => 2010, :year => 2012, :month => 2, :day => 31}) <=> InterpretedDate.new({:decade => 2000 })).should == 1
