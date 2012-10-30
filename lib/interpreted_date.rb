@@ -1,4 +1,5 @@
 require "interpreted_date/version"
+require 'date'
 
 class InterpretedDate
   attr_accessor :decade, :year, :month, :day
@@ -134,10 +135,10 @@ class InterpretedDate
 
   def <=>(other_date)
     return nil unless other_date.is_a?(InterpretedDate)
-    (self.decade <=> other_date.decade).nonzero? ||
-    (self.year <=> other_date.year).nonzero? ||
-    (self.month <=> other_date.month).nonzero? ||
-    (self.day <=> other_date.day).nonzero? ||
+    (self.decade.to_i <=> other_date.decade.to_i).nonzero? ||
+    (self.year.to_i <=> other_date.year.to_i).nonzero? ||
+    (self.month.to_i <=> other_date.month.to_i).nonzero? ||
+    (self.day.to_i <=> other_date.day.to_i).nonzero? ||
     0
   end
 
