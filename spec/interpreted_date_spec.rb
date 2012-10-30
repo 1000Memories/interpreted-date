@@ -150,6 +150,11 @@ describe InterpretedDate do
       (InterpretedDate.new({:decade => 2010, :year => 2012, :month => 3}) <=> InterpretedDate.new({:decade => 2010, :year => 2012, :month => 3})).should == 0
     end
 
+    it "correctly sorts with the month nil" do
+      (InterpretedDate.new({:decade => 2010, :year => 2012, :month => 2}) <=> 
+        InterpretedDate.new({:decade => 2010, :year => 2012, :month => nil})).should == 1
+    end
+
     it "correctly sorts with the day" do
       (InterpretedDate.new({:decade => 2010, :year => 2012, :month => 2, :day => 31}) <=> InterpretedDate.new({:decade => 2010, :year => 2011, :month => 2, :day => 1 })).should == 1
       (InterpretedDate.new({:decade => 2010, :year => 2012, :month => 2, :day => 15}) <=> InterpretedDate.new({:decade => 2010, :year => 2013, :month => 2, :day => 31 })).should == -1
