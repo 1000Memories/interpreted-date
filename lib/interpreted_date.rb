@@ -92,10 +92,12 @@ class InterpretedDate
 
   def self.from_json(json)
     d = InterpretedDate.new
-    d.decade = json['decade']
-    d.year = json['year']
-    d.month = json['month']
-    d.day = json['day']
+    if json
+      d.decade = json['decade']
+      d.year = json['year']
+      d.month = json['month']
+      d.day = json['day']
+    end
     d
   end
 

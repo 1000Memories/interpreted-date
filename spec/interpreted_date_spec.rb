@@ -127,6 +127,10 @@ describe InterpretedDate do
     it "correctly parses date where the month is given by abbreviated name" do
       subject.should == InterpretedDate.from_json('year' => 2012, 'month' => 'Feb', 'day' => 31)
     end
+
+    it "gracefully handles a nil JSON" do
+      InterpretedDate.from_json(nil).should == InterpretedDate.new
+    end
   end
 
   describe "<=>" do
